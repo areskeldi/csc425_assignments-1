@@ -26,10 +26,8 @@ freeList::free_space( long int* location ) {
 void
 freeList::coalesce_forward() {
   while(head[1] != 0) {
-    long int* ref2;
     long int* ref2 = head + 2 + head[0];//temporary variable we need for future comparison to coalesce
-    long int* next;
-    next = (long int*)head[1];//temp variable for the chunk that will be joined to the chunk behind it
+    long int* next = (long int*)head[1];//temp variable for the chunk that will be joined to the chunk behind it
 
    if(ref2 == next) {
         head[0] = head[0] + 2 + next[0]; //updates the size of the newly coalesced chunk
